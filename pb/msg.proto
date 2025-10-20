@@ -1,7 +1,7 @@
 syntax="proto3";                //Proto协议
 package pb;                     //当前包名
 option csharp_namespace="Pb";   //给C#提供的选项
-option go_package= "mmo-game/pb;pb";
+option go_package= "./;pb";
 
 //同步客户端玩家ID
 message SyncPid{
@@ -27,3 +27,8 @@ message BroadCast{
   }
 }
 
+//==========================
+//聊天数据
+message Talk{
+  string Content=1;
+}

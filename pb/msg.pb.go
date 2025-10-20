@@ -250,6 +250,52 @@ func (*BroadCast_P) isBroadCast_Data() {}
 
 func (*BroadCast_ActionData) isBroadCast_Data() {}
 
+// ==========================
+// 聊天数据
+type Talk struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Content       string                 `protobuf:"bytes,1,opt,name=Content,proto3" json:"Content,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Talk) Reset() {
+	*x = Talk{}
+	mi := &file_msg_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Talk) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Talk) ProtoMessage() {}
+
+func (x *Talk) ProtoReflect() protoreflect.Message {
+	mi := &file_msg_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Talk.ProtoReflect.Descriptor instead.
+func (*Talk) Descriptor() ([]byte, []int) {
+	return file_msg_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Talk) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
 var File_msg_proto protoreflect.FileDescriptor
 
 const file_msg_proto_rawDesc = "" +
@@ -270,7 +316,9 @@ const file_msg_proto_rawDesc = "" +
 	"\n" +
 	"ActionData\x18\x05 \x01(\x05H\x00R\n" +
 	"ActionDataB\x06\n" +
-	"\x04DataB\x15Z\x0emmo-game/pb;pb\xaa\x02\x02Pbb\x06proto3"
+	"\x04Data\" \n" +
+	"\x04Talk\x12\x18\n" +
+	"\aContent\x18\x01 \x01(\tR\aContentB\fZ\x05./;pb\xaa\x02\x02Pbb\x06proto3"
 
 var (
 	file_msg_proto_rawDescOnce sync.Once
@@ -284,11 +332,12 @@ func file_msg_proto_rawDescGZIP() []byte {
 	return file_msg_proto_rawDescData
 }
 
-var file_msg_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_msg_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_msg_proto_goTypes = []any{
 	(*SyncPid)(nil),   // 0: pb.SyncPid
 	(*Position)(nil),  // 1: pb.Position
 	(*BroadCast)(nil), // 2: pb.BroadCast
+	(*Talk)(nil),      // 3: pb.Talk
 }
 var file_msg_proto_depIdxs = []int32{
 	1, // 0: pb.BroadCast.P:type_name -> pb.Position
@@ -315,7 +364,7 @@ func file_msg_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_msg_proto_rawDesc), len(file_msg_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
